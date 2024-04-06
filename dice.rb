@@ -65,4 +65,9 @@ get("/dice/home") do
      <li><a href='/dice/5/4'>Roll five 4-sided dice</a></li>
    </ul>"
 end
-
+require "better_errors"
+require "binding_of_caller"
+# Need this configuration for better_errors
+use(BetterErrors::Middleware)
+BetterErrors.application_root = __dir__
+BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
